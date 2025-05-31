@@ -1,0 +1,11 @@
+# Accept input from user
+user_input = input("Enter list: ")
+
+# Convert input string to a list of integers
+numbers = list(map(int, user_input.split()))
+
+# Use filter to keep only even numbers
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+
+# Print the result
+print("Even numbers:", even_numbers)

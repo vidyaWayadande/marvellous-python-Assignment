@@ -1,0 +1,20 @@
+# Function to check if a number is prime
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+
+user_input = input("Enter list: ")
+
+
+numbers = list(map(int, user_input.split()))
+
+
+prime_numbers = list(filter(is_prime, numbers))
+
+
+print("Prime numbers:", prime_numbers)

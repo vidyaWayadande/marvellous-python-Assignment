@@ -1,0 +1,9 @@
+# Lambda functions
+square = lambda x: x * x
+cube = lambda x: x * x * x
+
+# Input from user
+num = int(input("Enter a number: "))
+
+# Output
+print("Square:", square(num), "Cube:", cube(num))
