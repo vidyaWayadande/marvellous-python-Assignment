@@ -1,0 +1,20 @@
+import multiprocessing
+
+# Function to square a number
+def square(n):
+    return n * n
+
+if __name__ == "__main__":
+    
+    
+    numbers = [1, 2, 3, 4, 5]
+
+   
+    with multiprocessing.Pool() as pool:
+        
+
+        result = pool.map(square, numbers)
+
+  
+    print("Original list:", numbers)
+    print("Squared list:", result)

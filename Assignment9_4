@@ -1,0 +1,35 @@
+import time
+import threading
+import multiprocessing
+
+def compute_sum():
+    total = 0
+    for i in range(1, 10_000_001):
+        total += i
+
+# Normal execution
+def normal_sum():
+    start = time.time()
+    compute_sum()
+    print("Normal Time:", time.time() - start)
+
+# Threading
+def threading_sum():
+    start = time.time()
+    t = threading.Thread(target=compute_sum)
+    t.start()
+    t.join()
+    print("Threading Time:", time.time() - start)
+
+# Multiprocessing
+def multiprocessing_sum():
+    start = time.time()
+    p = multiprocessing.Process(target=compute_sum)
+    p.start()
+    p.join()
+    print("Multiprocessing Time:", time.time() - start)
+
+if __name__ == "__main__":
+    normal_sum()
+    threading_sum()
+    multiprocessing_sum()
