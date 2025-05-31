@@ -1,0 +1,35 @@
+import threading
+
+# Function to calculate sum of even factors
+def even_factors_sum(n):
+    total = 0
+    for i in range(1, n + 1):
+        if n % i == 0 and i % 2 == 0:
+            total += i
+    print("Sum of even factors:", total)
+
+# Function to calculate sum of odd factors
+def odd_factors_sum(n):
+    total = 0
+    for i in range(1, n + 1):
+        if n % i == 0 and i % 2 != 0:
+            total += i
+    print("Sum of odd factors:", total)
+
+# Get number input from user
+num = int(input("Enter a number: "))
+
+# Create threads with target functions and pass the number as argument
+even_thread = threading.Thread(target=even_factors_sum, args=(num,))
+odd_thread = threading.Thread(target=odd_factors_sum, args=(num,))
+
+# Start threads
+even_thread.start()
+odd_thread.start()
+
+# Wait for both threads to finish
+even_thread.join()
+odd_thread.join()
+
+# Final message from main thread
+print("exit from main")

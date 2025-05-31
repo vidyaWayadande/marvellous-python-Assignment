@@ -1,0 +1,36 @@
+import threading
+
+# Function to count lowercase letters
+def count_small(s):
+    count = sum(1 for c in s if c.islower())
+    print(f"[{threading.current_thread().name}] ID: {threading.get_ident()}, Small letters: {count}")
+
+# Function to count uppercase letters
+def count_capital(s):
+    count = sum(1 for c in s if c.isupper())
+    print(f"[{threading.current_thread().name}] ID: {threading.get_ident()}, Capital letters: {count}")
+
+# Function to count digits
+def count_digits(s):
+    count = sum(1 for c in s if c.isdigit())
+    print(f"[{threading.current_thread().name}] ID: {threading.get_ident()}, Digits: {count}")
+
+# Get input string from user
+input_str = input("Enter a string: ")
+
+# Create threads
+small_thread = threading.Thread(target=count_small, args=(input_str,), name="SmallThread")
+capital_thread = threading.Thread(target=count_capital, args=(input_str,), name="CapitalThread")
+digit_thread = threading.Thread(target=count_digits, args=(input_str,), name="DigitThread")
+
+# Start threads
+small_thread.start()
+capital_thread.start()
+digit_thread.start()
+
+# Wait for all threads to finish
+small_thread.join()
+capital_thread.join()
+digit_thread.join()
+
+print("All threads have finished.")

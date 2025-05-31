@@ -1,0 +1,29 @@
+import threading
+
+# Function to sum even numbers in a list
+def sum_even_numbers(numbers):
+    total = sum(num for num in numbers if num % 2 == 0)
+    print("Sum of even numbers:", total)
+
+# Function to sum odd numbers in a list
+def sum_odd_numbers(numbers):
+    total = sum(num for num in numbers if num % 2 != 0)
+    print("Sum of odd numbers:", total)
+
+# Get input list from the user
+user_input = input("Enter a list of integers (space-separated): ")
+numbers = list(map(int, user_input.split()))
+
+# Create threads
+even_thread = threading.Thread(target=sum_even_numbers, args=(numbers,))
+odd_thread = threading.Thread(target=sum_odd_numbers, args=(numbers,))
+
+# Start threads
+even_thread.start()
+odd_thread.start()
+
+# Wait for both threads to complete
+even_thread.join()
+odd_thread.join()
+
+print("Both threads have finished.")

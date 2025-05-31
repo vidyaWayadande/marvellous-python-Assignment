@@ -1,0 +1,27 @@
+import threading
+
+# Function to print first 10 even numbers
+def print_even():
+    print("Even numbers:")
+    for i in range(2, 21, 2):
+        print(i)
+
+# Function to print first 10 odd numbers
+def print_odd():
+    print("Odd numbers:")
+    for i in range(1, 20, 2):
+        print(i)
+
+# Create threads
+even_thread = threading.Thread(target=print_even, name="Even")
+odd_thread = threading.Thread(target=print_odd, name="Odd")
+
+# Start threads
+even_thread.start()
+odd_thread.start()
+
+# Wait for both threads to finish
+even_thread.join()
+odd_thread.join()
+
+print("Both threads have finished.")
