@@ -1,0 +1,4 @@
+power_of_two = lambda x: 2 ** x
+
+print(power_of_two(4))  # Output: 16
+print(power_of_two(6))  # Output: 64

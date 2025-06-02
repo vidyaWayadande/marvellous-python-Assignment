@@ -1,0 +1,26 @@
+from functools import reduce
+
+# Function to check for prime number
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+# Step 1: Take input from user
+input_str = input("Enter numbers separated by commas: ")
+num_list = list(map(int, input_str.split(',')))
+
+# Step 2: Filter prime numbers
+prime_numbers = list(filter(is_prime, num_list))
+print("After filter:", prime_numbers)
+
+# Step 3: Map - multiply each by 2
+doubled = list(map(lambda x: x * 2, prime_numbers))
+print("After map:", doubled)
+
+# Step 4: Reduce - find maximum
+maximum = reduce(lambda x, y: x if x > y else y, doubled)
+print("Output of reduce:", maximum)

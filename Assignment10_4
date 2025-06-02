@@ -1,0 +1,19 @@
+from functools import reduce
+
+# Step 1: Input from user
+input_str = input("Enter numbers separated by commas: ")
+
+# Step 2: Convert to list of integers
+num_list = list(map(int, input_str.split(',')))
+
+# Step 3: Filter even numbers
+filtered = list(filter(lambda x: x % 2 == 0, num_list))
+print("After filter:", filtered)
+
+# Step 4: Map - square each number
+mapped = list(map(lambda x: x ** 2, filtered))
+print("After map:", mapped)
+
+# Step 5: Reduce - sum of all squared even numbers
+result = reduce(lambda x, y: x + y, mapped)
+print("Output of reduce:", result)

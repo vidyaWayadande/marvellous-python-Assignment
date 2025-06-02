@@ -1,0 +1,4 @@
+multiply = lambda x, y: x * y
+
+print(multiply(4, 3))  # Output: 12
+print(multiply(6, 3))  # Output: 18
