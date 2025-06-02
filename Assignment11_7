@@ -1,0 +1,9 @@
+def print_pattern(n, current=1):
+    if current > n:
+        return
+    print('*' * current)
+    print_pattern(n, current + 1)
+
+# Example usage
+num = int(input("Enter number of rows: "))
+print_pattern(num)
